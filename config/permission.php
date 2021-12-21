@@ -28,6 +28,8 @@ return [
 
     ],
 
+    'database' => '',
+
     'table_names' => [
 
         /*

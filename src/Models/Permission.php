@@ -20,6 +20,8 @@ class Permission extends Model implements PermissionContract
 
     protected $guarded = [];
 
+    protected $connection;
+
     public function __construct(array $attributes = [])
     {
         $attributes['guard_name'] = $attributes['guard_name'] ?? config('auth.defaults.guard');
@@ -27,6 +29,8 @@ class Permission extends Model implements PermissionContract
         parent::__construct($attributes);
 
         $this->guarded[] = $this->primaryKey;
+
+        $this->connection = config('permission.database') ?? env('DB_DATABASE', 'database');
     }
 
     public function getTable()
